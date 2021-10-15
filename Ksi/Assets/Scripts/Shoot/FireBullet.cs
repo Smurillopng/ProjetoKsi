@@ -22,7 +22,7 @@ public class FireBullet : MonoBehaviour
     {
         if (Time.time >= nextRangedAttackTime)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse1))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 Shooting();
                 nextRangedAttackTime = Time.time + 1f / rateOfFire;

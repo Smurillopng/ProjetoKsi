@@ -55,12 +55,13 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Spawner.cs" />
     <Compile Include="Assets\Scripts\SpaceShip\ShipController.cs" />
+    <Compile Include="Assets\Scripts\Shoot\FireBullet.cs" />
+    <Compile Include="Assets\Scripts\Shoot\Bullet.cs" />
     <Compile Include="Assets\Scripts\CaiObj.cs" />
     <Compile Include="Assets\Scripts\CollectItem.cs" />
     <Compile Include="Assets\Scripts\SpaceShip\ShipInputHandler.cs" />
     <Compile Include="Assets\Scripts\MoveObj.cs" />
-    <Compile Include="Assets\Scripts\Shoot\FireBullet.cs" />
-    <Compile Include="Assets\Scripts\Shoot\Bullet.cs" />
+    <Compile Include="Assets\Scripts\AsteroidLife.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -17,12 +17,12 @@ public class ShipInputHandler : MonoBehaviour
     {
         Vector2 inputVector = Vector2.zero;
 
-        inputVector.x = Input.GetAxis("Horizontal");
-        inputVector.y = Input.GetAxis("Vertical");
+        inputVector.x = Input.GetAxis("Horizontal"); //input de rotação da nave
+        inputVector.y = Input.GetAxis("Vertical"); // input de aceleração da nave
 
         if (inputVector.y <= 0)
         {
-            inputVector.y = 0;
+            inputVector.y = 0; //não deixa dar ré
         }
 
         shipController.SetInputVector(inputVector);

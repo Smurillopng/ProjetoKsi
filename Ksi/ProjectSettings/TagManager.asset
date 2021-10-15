@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SpaceShip
   - Energy
+  - Asteroid
   layers:
   - Default
   - TransparentFX
