@@ -6,11 +6,14 @@ public class CollectItem : MonoBehaviour
 {
     private SpriteRenderer sr;
     private CircleCollider2D cc;
+    public float autoDestroy;
+    public int points;
 
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         cc = GetComponent<CircleCollider2D>();
+        Destruct();
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -18,10 +21,14 @@ public class CollectItem : MonoBehaviour
         if (collider.gameObject.CompareTag("SpaceShip"))
         {
 
-
             sr.enabled = false;
             cc.enabled = false;
-            Destroy(gameObject, 0f);
+            Destroy(gameObject);
         }
+    }
+    private void Destruct()
+    {
+
+        Destroy(gameObject, autoDestroy);
     }
 }
