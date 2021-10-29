@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnergySphere : MonoBehaviour
 {
+    ShipController shipController;
     public float speed;
     public Transform followPoint;
 
@@ -31,10 +32,15 @@ public class EnergySphere : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("SpaceShip"))
         {
+            followPoint = collider.gameObject.transform.Find("EnergyFollow").transform;
             follow = true;
+            //aqui inicia a coleta de pontos
+            
         }
 
     }
+
+   
 
     void Follow()
     {
