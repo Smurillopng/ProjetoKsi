@@ -51,10 +51,12 @@ public class ShipController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    // Limita o movimento da nave até uma parte específica da tela
     void Update()
     {
-
+        transform.position = new Vector2 (
+            Mathf.Clamp(transform.position.x, -50f, 50f),
+            Mathf.Clamp(transform.position.y, -25f, 35f));
     }
 
 
