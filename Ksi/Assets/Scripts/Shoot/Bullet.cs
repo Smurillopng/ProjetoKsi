@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D hit)
     {
-        if (hit.CompareTag("SpaceShip"))
+        if (hit.gameObject.layer == 10)
         {
             ShipController shipController = hit.GetComponent<ShipController>();
             Debug.Log("crash1");
