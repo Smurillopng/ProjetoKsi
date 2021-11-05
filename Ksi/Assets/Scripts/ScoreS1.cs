@@ -20,6 +20,7 @@ public class ScoreS1 : MonoBehaviour
     // Update is called once per frame
     public void ScoreUpdate()
     {
+        scoreShip1++;
         scoreText.text = scoreShip1.ToString();
     }
 }
