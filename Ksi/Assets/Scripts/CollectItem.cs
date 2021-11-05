@@ -20,6 +20,7 @@ public class CollectItem : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("SpaceShip"))
         {
+            collider.gameObject.GetComponent<ShipScore>().ScoreCount(points);
 
             sr.enabled = false;
             cc.enabled = false;

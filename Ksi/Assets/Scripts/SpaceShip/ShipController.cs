@@ -10,6 +10,7 @@ public class ShipController : MonoBehaviour
     public float speed = 30.0f; //velocidade da nave
     public float boostSpeed; // velocidade da nave com turbo
     public float turnFactor = 3.5f; // velocidade da rotação da nave
+    public GameObject energyFollow;
     private float defineNormalSpeed; // variável que irá receber a velocidade da nave para as mudanças durante o turbo
     [SerializeField] private Slider fuelSlider;
 
