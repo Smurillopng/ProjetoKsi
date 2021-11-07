@@ -12,9 +12,11 @@ ScriptsOnlyBuild:
     - ShipController
     - ShipInputHandler
     - Spawner
+    - backgroundLoop
     Cinemachine.dll:
     - Cinemachine.CinemachineBrain
     - Cinemachine.CinemachineComposer
+    - Cinemachine.CinemachineConfiner
     - Cinemachine.CinemachinePipeline
     - Cinemachine.CinemachineTransposer
     - Cinemachine.CinemachineVirtualCamera
@@ -35,8 +37,6 @@ ScriptsOnlyBuild:
     - UnityEditor.Tilemaps.TilemapPrefabStageHelper
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
-    Unity.Timeline.Editor.dll:
-    - TimelineProjectSettings
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -50,7 +50,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
   sceneClasses:
-    Assets/Scenes/SampleScene.unity:
+    Assets/Scenes/Game.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -80,51 +80,55 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1518}
+      Script: {instanceID: 1520}
     - Class: 114
-      Script: {instanceID: 1528}
+      Script: {instanceID: 1530}
     - Class: 114
-      Script: {instanceID: 1734}
+      Script: {instanceID: 1736}
     - Class: 114
-      Script: {instanceID: 2062}
+      Script: {instanceID: 2064}
     - Class: 114
-      Script: {instanceID: 2260}
+      Script: {instanceID: 2262}
     - Class: 114
-      Script: {instanceID: 2480}
+      Script: {instanceID: 2482}
     - Class: 114
-      Script: {instanceID: 2648}
+      Script: {instanceID: 2650}
     - Class: 114
-      Script: {instanceID: 2702}
+      Script: {instanceID: 2704}
     - Class: 114
-      Script: {instanceID: 2786}
+      Script: {instanceID: 2722}
     - Class: 114
-      Script: {instanceID: 2882}
+      Script: {instanceID: 2788}
     - Class: 114
-      Script: {instanceID: 2968}
+      Script: {instanceID: 2884}
     - Class: 114
-      Script: {instanceID: 2974}
+      Script: {instanceID: 2970}
     - Class: 114
-      Script: {instanceID: 3072}
+      Script: {instanceID: 2976}
     - Class: 114
-      Script: {instanceID: 3114}
+      Script: {instanceID: 3074}
     - Class: 114
-      Script: {instanceID: 3372}
+      Script: {instanceID: 3116}
     - Class: 114
-      Script: {instanceID: 3412}
+      Script: {instanceID: 3374}
     - Class: 114
-      Script: {instanceID: 4224}
+      Script: {instanceID: 3414}
     - Class: 114
-      Script: {instanceID: 4532}
+      Script: {instanceID: 4226}
     - Class: 114
-      Script: {instanceID: 4944}
+      Script: {instanceID: 4534}
     - Class: 114
-      Script: {instanceID: 4966}
+      Script: {instanceID: 4588}
     - Class: 114
-      Script: {instanceID: 5024}
+      Script: {instanceID: 4948}
     - Class: 114
-      Script: {instanceID: 5066}
+      Script: {instanceID: 4970}
     - Class: 114
-      Script: {instanceID: 5794}
+      Script: {instanceID: 5028}
+    - Class: 114
+      Script: {instanceID: 5070}
+    - Class: 114
+      Script: {instanceID: 5798}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -758,7 +762,7 @@ ScriptsOnlyBuild:
     className: CinemachineTrackedDolly
   - hash:
       serializedVersion: 2
-      Hash: 7f709e03fb0753f28d389385c9146d17
+      Hash: 9755081f220b7403fbf62512b711406c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EnergySphere
@@ -774,6 +778,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.2D.SpriteShape.Runtime.dll
     namespaceName: 
     className: SpriteShapeGeometryCache
+  - hash:
+      serializedVersion: 2
+      Hash: a36879d685cbfcc38742d0df86968ba9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: backgroundLoop
   - hash:
       serializedVersion: 2
       Hash: e6d75f1a9bc0c6f7085df0baa077e688
@@ -1022,5 +1032,5 @@ ScriptsOnlyBuild:
     className: FabrikSolver2D
   platform: 19
   scenePathNames:
-  - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Projects/Unity Jogos/Ksi_Data/Ksi.exe
+  - Assets/Scenes/Game.unity
+  playerPath: "C:/Users/sergi/OneDrive/\xC1rea de Trabalho/builds/Astrotag.exe"
