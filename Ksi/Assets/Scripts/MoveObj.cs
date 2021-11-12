@@ -10,12 +10,15 @@ public class MoveObj : MonoBehaviour {
     void Start () {
         rb = this.GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(-vel, 0);
-        borda = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        borda = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
 
     }
 
     // Update is called once per frame
     void Update () {
+        // Roda o sprite
+        transform.Rotate(new Vector3(0, 0, 90 * Time.deltaTime));
+
         if(transform.position.x < -borda.x * 2){
             Destroy(this.gameObject);
         }
