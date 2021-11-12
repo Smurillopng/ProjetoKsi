@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1060518051835690225}
   - component: {fileID: 1203809386554440325}
   - component: {fileID: 2143418611746114204}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: asteroid
   m_TagString: Asteroid
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 752426750435432880}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: energyDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}

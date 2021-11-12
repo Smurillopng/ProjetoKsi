@@ -24,7 +24,7 @@ public class ShipController : MonoBehaviour
     [SerializeField] private float refillFuel = 20f; //velocidade que o turbo recarrega
     [SerializeField] private float fuelCooldown = 2f; //cooldown pra recarregar se o turbo for completamente gasto
     private bool haveFuel = true; //verifica se ainda tem turbo
-    private float currentFuel; //quanntidade atual de turbo
+    private float currentFuel; //quantidade atual de turbo
     private bool turboOff = true; //verifica se está usando o turbo
     private float timer = 0f; //timer pra começar a recaregar o turbo
 
@@ -54,6 +54,7 @@ public class ShipController : MonoBehaviour
     // Limita o movimento da nave até uma parte específica da tela
     void Update()
     {
+        //Limita o player
         transform.position = new Vector2 (
             Mathf.Clamp(transform.position.x, -50f, 50f),
             Mathf.Clamp(transform.position.y, -25f, 35f));
@@ -84,7 +85,7 @@ public class ShipController : MonoBehaviour
         //create a force to the engine
         Vector2 engineForceVector = transform.up * accelerationInput * speed;
 
-        //apply force and pushes the ship foward
+        //apply force and pushes the ship forward
         shipRigidbody2D.AddForce(engineForceVector, ForceMode2D.Force);
     }
     private void ApplySteering()
@@ -118,7 +119,7 @@ public class ShipController : MonoBehaviour
             currentFuel -= burnFuel * Time.deltaTime;
             Debug.Log ("Usando turbo!");
         }
-        else if(!Input.GetKey(KeyCode.Space) && haveFuel) { //se não tiver apertando espaço recarrrega o turbo
+        else if(!Input.GetKey(KeyCode.Space) && haveFuel) { //se não tiver apertando espaço recarrega o turbo
             speed = defineNormalSpeed; //reseta a velocidade
             turboOff = true;
             RefillFuel();
