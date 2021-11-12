@@ -33,12 +33,18 @@ public class Bullet : MonoBehaviour
         if (hit.gameObject.layer == 10)
         {
             ShipController shipController = hit.GetComponent<ShipController>();
+            ShipNPController shipNPController = hit.GetComponent<ShipNPController>();
             Debug.Log("crash1");
             {
                 if (shipController != null)
                 {
                     Debug.Log("crash2");
                     shipController.ShipTakeDamage(damage);
+                }
+                if (shipNPController != null)
+                {
+                    Debug.Log("crash3");
+                    shipNPController.ShipTakeDamage(damage);
                 }
             }
             Destroy(gameObject);
