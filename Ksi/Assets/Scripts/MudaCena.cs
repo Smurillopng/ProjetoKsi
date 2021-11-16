@@ -1,13 +1,16 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MudaCena : MonoBehaviour
 {
-    public float delay = 20;
+    public float delay;
+    public int timerc;
+    public Text countDown;
     void Start()
     {
+        InvokeRepeating("DecreaseTimer", 1.0f, 1.0f);
         StartCoroutine(LoadLevelAfterDelay(delay));
     }
     
@@ -15,5 +18,18 @@ public class MudaCena : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene(3);
+    }
+
+    void DecreaseTimer()
+    {
+        if (timerc > 0)
+        {
+            timerc -= 1;
+        }
+    }
+
+    void Update()
+    {
+        countDown.text = timerc.ToString();
     }
 }
