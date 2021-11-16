@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class EnergySphere : MonoBehaviour
 {
+
+
     ShipController shipController;
+    EnemyShip_IA enemyShipIA;
     public float speed;
     public Transform followPoint;
+    //N sei pq n estÃ¡ respondendo
+    public GameObject gg;
 
     private bool follow = false;
 
@@ -42,7 +47,7 @@ public class EnergySphere : MonoBehaviour
 
             if (time > 0)
             {
-                time -= Time.deltaTime;//faz o tempo diminuir até 0 seg
+                time -= Time.deltaTime;//faz o tempo diminuir ate 0 seg
                                        //pode ficar acontecendo algo aqui.
             }
             else
@@ -60,7 +65,7 @@ public class EnergySphere : MonoBehaviour
                 }
 
                 //time volta a valer alguma coisa no final para resetar, ou em outra
-                //parte do código ele volta a valer algo.
+                //parte do codigo ele volta a valer algo.
 
                 time = defineTime;
             }
@@ -71,7 +76,7 @@ public class EnergySphere : MonoBehaviour
 
             if (time2collect > 0)
             {
-                time2collect -= Time.deltaTime;//faz o tempo diminuir até 0 seg
+                time2collect -= Time.deltaTime;//faz o tempo diminuir atï¿½ 0 seg
                                    //pode ficar acontecendo algo aqui.
             }
             else
@@ -80,7 +85,7 @@ public class EnergySphere : MonoBehaviour
                 time2collect = 0;
 
                 //time volta a valer alguma coisa no final para resetar, ou em outra
-                //parte do código ele volta a valer algo.
+                //parte do cï¿½digo ele volta a valer algo.
                 time2collect = defineTime2collect;
 
                 canCollect = true;
@@ -97,6 +102,9 @@ public class EnergySphere : MonoBehaviour
             if (collider.gameObject.layer == 10)
             {
                 followPoint = collider.gameObject.transform.Find("EnergyFollow").transform;
+                if(collider.gameObject.CompareTag("SpaceShipYellow")){
+                    //gg.GetComponent("EnemyShip_IA").Escape();
+                }
                 follow = true;
                 //aqui inicia a coleta de pontos
             }
@@ -104,12 +112,14 @@ public class EnergySphere : MonoBehaviour
             {
                 ssc1 = true;
                 ssc2 = false; //ssc3 = false; ssc3 = false;
-
+               // gg.EnemyShip_IA.scape=false;
+                
             }
             if (collider.gameObject.CompareTag("SpaceShipRed"))
             {
                 ssc2 = true;
                 ssc1 = false; //ssc3 = false; ssc3 = false;
+               // gg.scape=false;
 
             }
             canCollect = false;

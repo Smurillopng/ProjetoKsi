@@ -8,6 +8,7 @@ TagManager:
   - Energy
   - Asteroid
   - SpaceShipRed
+  - SpaceShipYellow
   layers:
   - Default
   - TransparentFX
