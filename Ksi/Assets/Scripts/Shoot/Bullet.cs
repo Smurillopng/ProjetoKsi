@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -7,7 +8,7 @@ public class Bullet : MonoBehaviour
     public float speed;
     public int damage;
     public float autoDestroy;
-
+    public AudioClip somTiro;
     private Rigidbody2D rb;
 
     private void Awake()
@@ -47,6 +48,7 @@ public class Bullet : MonoBehaviour
                     shipNPController.ShipTakeDamage(damage);
                 }
             }
+            AudioSource.PlayClipAtPoint(somTiro, this.gameObject.transform.position);
             Destroy(gameObject);
         }
 
@@ -61,11 +63,13 @@ public class Bullet : MonoBehaviour
                     asteroidLife.AsteroidTakeDamage(damage);
                 }
             }
+            AudioSource.PlayClipAtPoint(somTiro, this.gameObject.transform.position);
             Destroy(gameObject);
         }
 
         if (hit.gameObject.layer == 8)
         {
+            AudioSource.PlayClipAtPoint(somTiro, this.gameObject.transform.position);
             Destroy(gameObject);
         }
 
@@ -74,7 +78,7 @@ public class Bullet : MonoBehaviour
 
     private void Destruct()
     {
-
+        AudioSource.PlayClipAtPoint(somTiro, this.gameObject.transform.position);
         Destroy(gameObject, autoDestroy);
     }
 }

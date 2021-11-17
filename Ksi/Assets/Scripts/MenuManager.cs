@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Toggle = UnityEngine.UI.Toggle;
+using UnityEngine.Audio;
 
 public class MenuManager : MonoBehaviour
 {
@@ -38,11 +39,6 @@ public class MenuManager : MonoBehaviour
     public void LoadOptions() 
     {
         SceneManager.LoadScene(2);
-    }
-
-    public void LoadBack()
-    {
-        
     }
 
     public void QuitGame()
@@ -84,6 +80,4 @@ public class MenuManager : MonoBehaviour
             vSyncToggle.image.sprite = checkbox_off;
         }
     }
-
-
 }

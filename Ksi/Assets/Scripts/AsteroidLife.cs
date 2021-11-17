@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 using UnityEngine;
 
 public class AsteroidLife : MonoBehaviour
@@ -8,7 +9,7 @@ public class AsteroidLife : MonoBehaviour
 
     public Transform energyDrop;
     public GameObject energy;
-
+    public AudioClip destroiSom;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,12 +29,14 @@ public class AsteroidLife : MonoBehaviour
         if(health <= 0)
         {
             Instantiate(energy, energyDrop.position, energyDrop.rotation);
+            AudioSource.PlayClipAtPoint(destroiSom, this.gameObject.transform.position);
             Destruct();
         }
     }
 
     private void Destruct()
     {
+        AudioSource.PlayClipAtPoint(destroiSom, this.gameObject.transform.position);
         Destroy(gameObject);
     }
 }

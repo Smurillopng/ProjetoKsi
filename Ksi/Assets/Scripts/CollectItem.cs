@@ -7,6 +7,7 @@ public class CollectItem : MonoBehaviour
     private SpriteRenderer sr;
     private CircleCollider2D cc;
     public float autoDestroy;
+    public AudioClip somColeta;
     public int points;
 
     void Start()
@@ -18,10 +19,11 @@ public class CollectItem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
+        
         if (collider.gameObject.CompareTag("SpaceShip"))
         {
+            AudioSource.PlayClipAtPoint(somColeta, this.gameObject.transform.position);
             ScoreS1.instance.ScoreUpdate();
-
             sr.enabled = false;
             cc.enabled = false;
             Destroy(gameObject);
@@ -29,8 +31,8 @@ public class CollectItem : MonoBehaviour
 
         if (collider.gameObject.CompareTag("SpaceShipRed"))
         {
+            AudioSource.PlayClipAtPoint(somColeta, this.gameObject.transform.position);
             ScoreS2.instance.ScoreUpdate();
-
             sr.enabled = false;
             cc.enabled = false;
             Destroy(gameObject);
@@ -38,7 +40,6 @@ public class CollectItem : MonoBehaviour
     }
     private void Destruct()
     {
-
         Destroy(gameObject, autoDestroy);
     }
 }

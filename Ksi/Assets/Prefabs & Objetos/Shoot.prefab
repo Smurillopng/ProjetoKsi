@@ -100,6 +100,7 @@ MonoBehaviour:
   speed: 20
   damage: 1
   autoDestroy: 2
+  somTiro: {fileID: 8300000, guid: 4c4785ebd8070444fbac857277976204, type: 3}
 --- !u!50 &1480583720828329570
 Rigidbody2D:
   serializedVersion: 4

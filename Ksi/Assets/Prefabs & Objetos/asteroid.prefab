@@ -115,6 +115,7 @@ MonoBehaviour:
   health: 1
   energyDrop: {fileID: 752426750435432880}
   energy: {fileID: 4182643776269628361, guid: d06ab5e6e4843d4458b2a6a2dc3fa3f6, type: 3}
+  destroiSom: {fileID: 8300000, guid: dc441c8af384175439854956ad5e0f0f, type: 3}
 --- !u!50 &1203809386554440325
 Rigidbody2D:
   serializedVersion: 4
