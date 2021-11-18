@@ -7,6 +7,9 @@ public class SoundManager : MonoBehaviour
     [SerializeField] Slider musicSlider;
     [SerializeField] Slider sfxSlider;
     public AudioMixer musicManage;
+    public GameObject meteoroPrefab;
+    public GameObject energiaPrefab;
+    public float volumeSFX;
     void Start()
     {
         if (!PlayerPrefs.HasKey("musicVolume") || !PlayerPrefs.HasKey("sfxVolume"))
@@ -20,6 +23,11 @@ public class SoundManager : MonoBehaviour
             Load();
         }
     }
+    void Update()
+    {
+        meteoroPrefab.GetComponent<AsteroidLife>().volumeAsteroid = volumeSFX;
+        energiaPrefab.GetComponent<CollectItem>().volumeEnergicula = volumeSFX;
+    }
     public void ChangeMusicVolume(float sliderValue)
     {
         musicManage.SetFloat("musicVol", Mathf.Log10 (musicSlider.value) * 20);
@@ -29,6 +37,7 @@ public class SoundManager : MonoBehaviour
     public void ChangeSFXVolume(float sliderValue)
     {
         musicManage.SetFloat("sfxVol", Mathf.Log10 (sfxSlider.value) * 20);
+        volumeSFX = sfxSlider.value;
         Save();
     }
     private void Load()

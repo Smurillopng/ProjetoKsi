@@ -7,17 +7,10 @@ public class FireBullet : MonoBehaviour
 
     public float rateOfFire;
     float nextRangedAttackTime = 0f;
-
     public Transform ShotSpawnPoint;
     public GameObject shot;
+    public GameObject som;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (Time.time >= nextRangedAttackTime)
@@ -32,6 +25,7 @@ public class FireBullet : MonoBehaviour
 
     void Shooting()
     {
+        som.GetComponent<AudioSource>().Play();
         Instantiate(shot, ShotSpawnPoint.position, ShotSpawnPoint.rotation);
     }
 }

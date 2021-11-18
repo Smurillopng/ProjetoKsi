@@ -115,3 +115,4 @@ MonoBehaviour:
   autoDestroy: 10
   somColeta: {fileID: 8300000, guid: 0ac8fdc6e417d4e469e9e02dc40d987a, type: 3}
   points: 1
+  volumeEnergicula: 1

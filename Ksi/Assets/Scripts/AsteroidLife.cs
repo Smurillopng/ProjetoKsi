@@ -10,18 +10,7 @@ public class AsteroidLife : MonoBehaviour
     public Transform energyDrop;
     public GameObject energy;
     public AudioClip destroiSom;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    public float volumeAsteroid; 
     public void AsteroidTakeDamage(int damage)
     {
         health -= damage;
@@ -29,14 +18,14 @@ public class AsteroidLife : MonoBehaviour
         if(health <= 0)
         {
             Instantiate(energy, energyDrop.position, energyDrop.rotation);
-            AudioSource.PlayClipAtPoint(destroiSom, this.gameObject.transform.position);
+            AudioSource.PlayClipAtPoint(destroiSom, this.gameObject.transform.position, volumeAsteroid);
             Destruct();
         }
     }
 
     private void Destruct()
-    {
-        AudioSource.PlayClipAtPoint(destroiSom, this.gameObject.transform.position);
+    {   
+        AudioSource.PlayClipAtPoint(destroiSom, this.gameObject.transform.position, volumeAsteroid);
         Destroy(gameObject);
     }
 }

@@ -9,6 +9,7 @@ public class CollectItem : MonoBehaviour
     public float autoDestroy;
     public AudioClip somColeta;
     public int points;
+    public float volumeEnergicula;
 
     void Start()
     {
@@ -22,7 +23,7 @@ public class CollectItem : MonoBehaviour
         
         if (collider.gameObject.CompareTag("SpaceShip"))
         {
-            AudioSource.PlayClipAtPoint(somColeta, this.gameObject.transform.position);
+            AudioSource.PlayClipAtPoint(somColeta, this.gameObject.transform.position, volumeEnergicula);
             ScoreS1.instance.ScoreUpdate();
             sr.enabled = false;
             cc.enabled = false;
@@ -31,7 +32,7 @@ public class CollectItem : MonoBehaviour
 
         if (collider.gameObject.CompareTag("SpaceShipRed"))
         {
-            AudioSource.PlayClipAtPoint(somColeta, this.gameObject.transform.position);
+            AudioSource.PlayClipAtPoint(somColeta, this.gameObject.transform.position, volumeEnergicula);
             ScoreS2.instance.ScoreUpdate();
             sr.enabled = false;
             cc.enabled = false;

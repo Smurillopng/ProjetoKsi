@@ -8,27 +8,18 @@ public class Bullet : MonoBehaviour
     public float speed;
     public int damage;
     public float autoDestroy;
-    public AudioClip somTiro;
+    //public AudioClip somTiro;
     private Rigidbody2D rb;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
-    // Start is called before the first frame update
     void Start()
     {
         rb.velocity = transform.up * speed;
         Destruct();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void OnTriggerEnter2D(Collider2D hit)
     {
         if (hit.gameObject.layer == 10)
@@ -48,10 +39,8 @@ public class Bullet : MonoBehaviour
                     shipNPController.ShipTakeDamage(damage);
                 }
             }
-            AudioSource.PlayClipAtPoint(somTiro, this.gameObject.transform.position);
             Destroy(gameObject);
         }
-
         if (hit.CompareTag("Asteroid"))
         {
             AsteroidLife asteroidLife = hit.GetComponent<AsteroidLife>();
@@ -63,22 +52,15 @@ public class Bullet : MonoBehaviour
                     asteroidLife.AsteroidTakeDamage(damage);
                 }
             }
-            AudioSource.PlayClipAtPoint(somTiro, this.gameObject.transform.position);
             Destroy(gameObject);
         }
-
         if (hit.gameObject.layer == 8)
         {
-            AudioSource.PlayClipAtPoint(somTiro, this.gameObject.transform.position);
             Destroy(gameObject);
         }
-
-
     }
-
     private void Destruct()
     {
-        AudioSource.PlayClipAtPoint(somTiro, this.gameObject.transform.position);
         Destroy(gameObject, autoDestroy);
     }
 }
