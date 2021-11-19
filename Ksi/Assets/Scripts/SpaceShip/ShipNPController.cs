@@ -7,8 +7,13 @@ using Pathfinding;
 
 public class ShipNPController : MonoBehaviour
 {
+
+    public GameObject energysphere;
+
     [Header("Ship Settings")]
     public float speed = 30.0f; //velocidade da nave
+
+    public float speedRotation = 10.0f; //velocidade da nave
     public float boostSpeed; // velocidade da nave com turbo
     public float turnFactor = 3.5f; // velocidade da rotação da nave
     public GameObject energyFollow;
@@ -19,9 +24,11 @@ public class ShipNPController : MonoBehaviour
     float accelerationInput = 0;
     float steeringInput = 0;
     float rotationAngle = 0;
-
+    private Vector3 pointToPosition;
     [SerializeField] private float fuel = 100f; //quantidade máxima de turbo
     [SerializeField] private float burnFuel = 20f; //velocidade que o turbo é gasto
+
+    [SerializeField] private float angle;
     [SerializeField] private float refillFuel = 20f; //velocidade que o turbo recarrega
     [SerializeField] private float fuelCooldown = 2f; //cooldown pra recarregar se o turbo for completamente gasto
     private bool haveFuel = true; //verifica se ainda tem turbo
@@ -46,11 +53,13 @@ public class ShipNPController : MonoBehaviour
         shipSprite = GetComponent<SpriteRenderer>();
         defineNormalSpeed = speed;
         currentFuel = fuel; //inicia o turbo com carga máxima
+        pointToPosition = energysphere.transform.position;
     }
 
     // Start is called before the first frame update
     void Start()
     {
+    
 
     }
 
@@ -61,6 +70,12 @@ public class ShipNPController : MonoBehaviour
         transform.position = new Vector2 (
             Mathf.Clamp(transform.position.x, -50f, 50f),
             Mathf.Clamp(transform.position.y, -25f, 35f));
+
+        pointToPosition = energysphere.transform.position;
+        Vector3 vectorToTarget = pointToPosition - transform.position;
+        float angle = (Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg)-90;
+        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * speedRotation);
     }
 
 
@@ -75,6 +90,8 @@ public class ShipNPController : MonoBehaviour
         //FuelBoost();
         }
     }
+
+    
 
     private void RefillFuel() { //recarrega o turbo se ele não estiver sendo usado
         if(currentFuel < fuel && turboOff) {

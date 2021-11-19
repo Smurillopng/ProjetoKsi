@@ -11,7 +11,11 @@ public class EnergySphere : MonoBehaviour
     public float speed;
     public Transform followPoint;
     //N sei pq n está respondendo
-    public GameObject gg;
+    public GameObject yellowShip;
+    public GameObject blueShip;
+    public GameObject redShip;
+    public GameObject playerShip;
+    bool scape = true;
 
     private bool follow = false;
 
@@ -25,6 +29,8 @@ public class EnergySphere : MonoBehaviour
 
     private bool ssc1 = false;
     private bool ssc2 = false;
+    private bool ssc3 = false;
+    private bool ssc4 = false;
     //private bool ssc3 = false;
     //private bool ssc4 = false;
 
@@ -62,6 +68,14 @@ public class EnergySphere : MonoBehaviour
                 if (ssc2)
                 {
                     ScoreS2.instance.ScoreUpdate();
+                }
+                 if (ssc3)
+                {
+                    ScoreS3.instance.ScoreUpdate();
+                }
+                 if (ssc4)
+                {
+                    ScoreS4.instance.ScoreUpdate();
                 }
 
                 //time volta a valer alguma coisa no final para resetar, ou em outra
@@ -102,24 +116,56 @@ public class EnergySphere : MonoBehaviour
             if (collider.gameObject.layer == 10)
             {
                 followPoint = collider.gameObject.transform.Find("EnergyFollow").transform;
-                if(collider.gameObject.CompareTag("SpaceShipYellow")){
-                    //gg.GetComponent("EnemyShip_IA").Escape();
-                }
+                
                 follow = true;
                 //aqui inicia a coleta de pontos
             }
+            if (collider.gameObject.CompareTag("SpaceShipYellow")){
+                yellowShip.GetComponent<EnemyShip_IA>().scape = true;
+                blueShip.GetComponent<EnemyShip_IA>().scape = false;
+                redShip.GetComponent<EnemyShip_IA>().scape = false;
+
+                ssc4 = true;
+                ssc2 = false; 
+                ssc3 = false; 
+                ssc1 = false;            
+                     
+                }
             if (collider.gameObject.CompareTag("SpaceShip"))
             {
+                blueShip.GetComponent<EnemyShip_IA>().scape = false;
+                redShip.GetComponent<EnemyShip_IA>().scape = false;
+                yellowShip.GetComponent<EnemyShip_IA>().scape = false;
+
                 ssc1 = true;
-                ssc2 = false; //ssc3 = false; ssc3 = false;
-               // gg.EnemyShip_IA.scape=false;
-                
+                ssc2 = false; 
+                ssc3 = false; 
+                ssc4 = false;
+                               
             }
             if (collider.gameObject.CompareTag("SpaceShipRed"))
             {
+                redShip.GetComponent<EnemyShip_IA>().scape = true;
+                blueShip.GetComponent<EnemyShip_IA>().scape = false;
+                yellowShip.GetComponent<EnemyShip_IA>().scape = false;
+
                 ssc2 = true;
-                ssc1 = false; //ssc3 = false; ssc3 = false;
-               // gg.scape=false;
+                ssc1 = false; 
+                ssc3 = false; 
+                ssc4 = false;
+                              
+
+            }
+             if (collider.gameObject.CompareTag("SpaceShipBlue"))
+            {
+                redShip.GetComponent<EnemyShip_IA>().scape = false;
+                blueShip.GetComponent<EnemyShip_IA>().scape = true;
+                yellowShip.GetComponent<EnemyShip_IA>().scape = false;
+
+                ssc3 = true;
+                ssc1 = false; 
+                ssc2 = false; 
+                ssc4 = false;              
 
             }
             canCollect = false;

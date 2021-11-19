@@ -35,6 +35,22 @@ public class CollectItem : MonoBehaviour
             cc.enabled = false;
             Destroy(gameObject);
         }
+        if (collider.gameObject.CompareTag("SpaceShipBlue"))
+        {
+            ScoreS3.instance.ScoreUpdate();
+
+            sr.enabled = false;
+            cc.enabled = false;
+            Destroy(gameObject);
+        }
+        if (collider.gameObject.CompareTag("SpaceShipYellow"))
+        {
+            ScoreS4.instance.ScoreUpdate();
+
+            sr.enabled = false;
+            cc.enabled = false;
+            Destroy(gameObject);
+        }
     }
     private void Destruct()
     {

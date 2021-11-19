@@ -9,6 +9,7 @@ TagManager:
   - Asteroid
   - SpaceShipRed
   - SpaceShipYellow
+  - SpaceShipBlue
   layers:
   - Default
   - TransparentFX
