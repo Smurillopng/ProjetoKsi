@@ -2,9 +2,18 @@ using UnityEngine;
 
 public class EnergySphere : MonoBehaviour
 {
+
+
     ShipController shipController;
+    EnemyShip_IA enemyShipIA;
     public float speed;
     public Transform followPoint;
+    //N sei pq n estÃ¡ respondendo
+    public GameObject yellowShip;
+    public GameObject blueShip;
+    public GameObject redShip;
+    public GameObject playerShip;
+    bool scape = true;
 
     private bool follow = false;
 
@@ -18,6 +27,8 @@ public class EnergySphere : MonoBehaviour
 
     private bool ssc1 = false;
     private bool ssc2 = false;
+    private bool ssc3 = false;
+    private bool ssc4 = false;
     //private bool ssc3 = false;
     //private bool ssc4 = false;
 
@@ -40,7 +51,7 @@ public class EnergySphere : MonoBehaviour
 
             if (time > 0)
             {
-                time -= Time.deltaTime;//faz o tempo diminuir até 0 seg
+                time -= Time.deltaTime;//faz o tempo diminuir ate 0 seg
                                        //pode ficar acontecendo algo aqui.
             }
             else
@@ -56,9 +67,17 @@ public class EnergySphere : MonoBehaviour
                 {
                     ScoreS2.instance.ScoreUpdate();
                 }
+                 if (ssc3)
+                {
+                    ScoreS3.instance.ScoreUpdate();
+                }
+                 if (ssc4)
+                {
+                    ScoreS4.instance.ScoreUpdate();
+                }
 
                 //time volta a valer alguma coisa no final para resetar, ou em outra
-                //parte do código ele volta a valer algo.
+                //parte do codigo ele volta a valer algo.
 
                 time = defineTime;
             }
@@ -69,7 +88,7 @@ public class EnergySphere : MonoBehaviour
 
             if (time2collect > 0)
             {
-                time2collect -= Time.deltaTime;//faz o tempo diminuir até 0 seg
+                time2collect -= Time.deltaTime;//faz o tempo diminuir atï¿½ 0 seg
                                    //pode ficar acontecendo algo aqui.
             }
             else
@@ -78,7 +97,7 @@ public class EnergySphere : MonoBehaviour
                 time2collect = 0;
 
                 //time volta a valer alguma coisa no final para resetar, ou em outra
-                //parte do código ele volta a valer algo.
+                //parte do cï¿½digo ele volta a valer algo.
                 time2collect = defineTime2collect;
 
                 canCollect = true;
@@ -95,19 +114,56 @@ public class EnergySphere : MonoBehaviour
             if (collider.gameObject.layer == 10)
             {
                 followPoint = collider.gameObject.transform.Find("EnergyFollow").transform;
+                
                 follow = true;
                 //aqui inicia a coleta de pontos
             }
+            if (collider.gameObject.CompareTag("SpaceShipYellow")){
+                yellowShip.GetComponent<EnemyShip_IA>().scape = true;
+                blueShip.GetComponent<EnemyShip_IA>().scape = false;
+                redShip.GetComponent<EnemyShip_IA>().scape = false;
+
+                ssc4 = true;
+                ssc2 = false; 
+                ssc3 = false; 
+                ssc1 = false;            
+                     
+                }
             if (collider.gameObject.CompareTag("SpaceShip"))
             {
-                ssc1 = true;
-                ssc2 = false; //ssc3 = false; ssc3 = false;
+                blueShip.GetComponent<EnemyShip_IA>().scape = false;
+                redShip.GetComponent<EnemyShip_IA>().scape = false;
+                yellowShip.GetComponent<EnemyShip_IA>().scape = false;
 
+                ssc1 = true;
+                ssc2 = false; 
+                ssc3 = false; 
+                ssc4 = false;
+                               
             }
             if (collider.gameObject.CompareTag("SpaceShipRed"))
             {
+                redShip.GetComponent<EnemyShip_IA>().scape = true;
+                blueShip.GetComponent<EnemyShip_IA>().scape = false;
+                yellowShip.GetComponent<EnemyShip_IA>().scape = false;
+
                 ssc2 = true;
-                ssc1 = false; //ssc3 = false; ssc3 = false;
+                ssc1 = false; 
+                ssc3 = false; 
+                ssc4 = false;
+                              
+
+            }
+             if (collider.gameObject.CompareTag("SpaceShipBlue"))
+            {
+                redShip.GetComponent<EnemyShip_IA>().scape = false;
+                blueShip.GetComponent<EnemyShip_IA>().scape = true;
+                yellowShip.GetComponent<EnemyShip_IA>().scape = false;
+
+                ssc3 = true;
+                ssc1 = false; 
+                ssc2 = false; 
+                ssc4 = false;              
 
             }
             canCollect = false;
