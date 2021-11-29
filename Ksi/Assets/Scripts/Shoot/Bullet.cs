@@ -26,16 +26,13 @@ public class Bullet : MonoBehaviour
         {
             ShipController shipController = hit.GetComponent<ShipController>();
             ShipNPController shipNPController = hit.GetComponent<ShipNPController>();
-            Debug.Log("crash1");
             {
                 if (shipController != null)
                 {
-                    Debug.Log("crash2");
                     shipController.ShipTakeDamage(damage);
                 }
                 if (shipNPController != null)
                 {
-                    Debug.Log("crash3");
                     shipNPController.ShipTakeDamage(damage);
                 }
             }
@@ -44,7 +41,6 @@ public class Bullet : MonoBehaviour
         if (hit.CompareTag("Asteroid"))
         {
             AsteroidLife asteroidLife = hit.GetComponent<AsteroidLife>();
-            Debug.Log("crash1");
             {
                 if (asteroidLife != null)
                 {

@@ -158,7 +158,6 @@ public class ShipNPController : MonoBehaviour
 
     public void ShipTakeDamage(int damage)
     {
-        Debug.Log("tomou dano");
         
         StartCoroutine(ColorHit()); //chama a função q muda a cor da nave quando leva dano
         StartCoroutine(ShipFixing()); //função q desabilita o movimento por um tempo

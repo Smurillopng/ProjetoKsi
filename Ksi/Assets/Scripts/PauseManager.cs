@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PauseManager : MonoBehaviour
 {
     public GameObject pauseMenu;
-    private static bool isPaused;
+    public static bool isPaused;
+
     void Start()
     {
         pauseMenu.SetActive(false);

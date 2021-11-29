@@ -15,11 +15,12 @@ public class FireBullet : MonoBehaviour
     {
         if (Time.time >= nextRangedAttackTime)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+
+            if (Input.GetKeyDown(KeyCode.Mouse0) && PauseManager.isPaused == false)
             {
                 Shooting();
                 nextRangedAttackTime = Time.time + 1f / rateOfFire;
-            }
+            } else if (Input.GetKeyDown(KeyCode.Mouse0) && PauseManager.isPaused == true){}
         }
     }
 

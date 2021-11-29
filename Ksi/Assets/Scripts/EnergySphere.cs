@@ -67,11 +67,11 @@ public class EnergySphere : MonoBehaviour
                 {
                     ScoreS2.instance.ScoreUpdate();
                 }
-                 if (ssc3)
+                if (ssc3)
                 {
                     ScoreS3.instance.ScoreUpdate();
                 }
-                 if (ssc4)
+                if (ssc4)
                 {
                     ScoreS4.instance.ScoreUpdate();
                 }
@@ -89,7 +89,7 @@ public class EnergySphere : MonoBehaviour
             if (time2collect > 0)
             {
                 time2collect -= Time.deltaTime;//faz o tempo diminuir at� 0 seg
-                                   //pode ficar acontecendo algo aqui.
+                                               //pode ficar acontecendo algo aqui.
             }
             else
             {
@@ -106,7 +106,7 @@ public class EnergySphere : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void OnCollisionEnter2D(Collision2D collider)
     {
         if (canCollect)
         {
@@ -114,21 +114,22 @@ public class EnergySphere : MonoBehaviour
             if (collider.gameObject.layer == 10)
             {
                 followPoint = collider.gameObject.transform.Find("EnergyFollow").transform;
-                
+
                 follow = true;
                 //aqui inicia a coleta de pontos
             }
-            if (collider.gameObject.CompareTag("SpaceShipYellow")){
+            if (collider.gameObject.CompareTag("SpaceShipYellow"))
+            {
                 yellowShip.GetComponent<EnemyShip_IA>().scape = true;
                 blueShip.GetComponent<EnemyShip_IA>().scape = false;
                 redShip.GetComponent<EnemyShip_IA>().scape = false;
 
                 ssc4 = true;
-                ssc2 = false; 
-                ssc3 = false; 
-                ssc1 = false;            
-                     
-                }
+                ssc2 = false;
+                ssc3 = false;
+                ssc1 = false;
+
+            }
             if (collider.gameObject.CompareTag("SpaceShip"))
             {
                 blueShip.GetComponent<EnemyShip_IA>().scape = false;
@@ -136,10 +137,10 @@ public class EnergySphere : MonoBehaviour
                 yellowShip.GetComponent<EnemyShip_IA>().scape = false;
 
                 ssc1 = true;
-                ssc2 = false; 
-                ssc3 = false; 
+                ssc2 = false;
+                ssc3 = false;
                 ssc4 = false;
-                               
+
             }
             if (collider.gameObject.CompareTag("SpaceShipRed"))
             {
@@ -148,30 +149,34 @@ public class EnergySphere : MonoBehaviour
                 yellowShip.GetComponent<EnemyShip_IA>().scape = false;
 
                 ssc2 = true;
-                ssc1 = false; 
-                ssc3 = false; 
+                ssc1 = false;
+                ssc3 = false;
                 ssc4 = false;
-                              
+
 
             }
-             if (collider.gameObject.CompareTag("SpaceShipBlue"))
+            if (collider.gameObject.CompareTag("SpaceShipBlue"))
             {
                 redShip.GetComponent<EnemyShip_IA>().scape = false;
                 blueShip.GetComponent<EnemyShip_IA>().scape = true;
                 yellowShip.GetComponent<EnemyShip_IA>().scape = false;
 
                 ssc3 = true;
-                ssc1 = false; 
-                ssc2 = false; 
-                ssc4 = false;              
+                ssc1 = false;
+                ssc2 = false;
+                ssc4 = false;
 
+            }
+            if (collider.gameObject.CompareTag("Parede"))
+            {
+                Debug.Log("bateu na parede");
             }
             canCollect = false;
         }
 
 
     }
-    
+
     void Follow()
     {
         transform.position = Vector2.MoveTowards(transform.position, followPoint.position, speed * Time.deltaTime);

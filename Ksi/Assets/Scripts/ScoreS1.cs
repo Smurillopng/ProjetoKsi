@@ -17,6 +17,7 @@ public class ScoreS1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        scoreShip1 = 0;
         instance = this;
     }
 

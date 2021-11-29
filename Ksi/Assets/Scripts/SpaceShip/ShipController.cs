@@ -117,7 +117,6 @@ public class ShipController : MonoBehaviour
             turboOff = false;
             speed = boostSpeed; //velocidade com turbo
             currentFuel -= burnFuel * Time.deltaTime;
-            Debug.Log ("Usando turbo!");
         }
         else if(!Input.GetKey(KeyCode.Space) && haveFuel) { //se não tiver apertando espaço recarrega o turbo
             speed = defineNormalSpeed; //reseta a velocidade

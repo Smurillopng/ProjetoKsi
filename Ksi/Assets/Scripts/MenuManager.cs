@@ -28,17 +28,22 @@ public class MenuManager : MonoBehaviour
 
     public void LoadMain() 
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Main Menu");
     }    
     
     public void LoadGame() 
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Game");
     }
 
     public void LoadOptions() 
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("Options");
+    }
+
+        public void LoadTuto() 
+    {
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void QuitGame()

@@ -11,6 +11,7 @@ TagManager:
   - SpaceShipYellow
   - SpaceShipBlue
   - Obstaculos
+  - Parede
   layers:
   - Default
   - TransparentFX
