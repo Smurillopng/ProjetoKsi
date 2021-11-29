@@ -12,6 +12,10 @@ public class EnemyShip_IA : MonoBehaviour
     public Transform enemyGFX;
 
     public float speed = 200f;
+
+    public float speedRotation = 10.0f; //velocidade rotação da nave
+
+    private Vector3 pointToPosition;
     public float nextWaypointDistance = 2f;
 
     private float time = 0;
@@ -23,6 +27,8 @@ public class EnemyShip_IA : MonoBehaviour
     
 
     Path path;//talvez usar mais de um caminho
+
+    Vector3 steeringTarget;
     int currentWaypoint = 0;
     bool reachedEndOfPath = false;
 
@@ -35,12 +41,20 @@ public class EnemyShip_IA : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         
         InvokeRepeating("UpdatePath", 0f, .5f);   
+
+        pointToPosition = target.transform.position;
     }
 
     void UpdatePath()
     {
         if(seeker.IsDone() && scape == false){//Calcula um novo trajeto após o ultimo trajeto já ter sido calculado.
             seeker.StartPath(rb.position, target.position, OnPathComplete);
+
+            pointToPosition = target.transform.position;//path.vectorPath[currentWaypoint];//energysphere.transform.position;
+            Vector3 vectorToTarget = pointToPosition - transform.position;
+            float angle = (Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg)-90;
+            Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * speedRotation);
         }
         else if(seeker.IsDone() && scape == true){
             if(time>0){
@@ -53,6 +67,12 @@ public class EnemyShip_IA : MonoBehaviour
             }
             
             seeker.StartPath(rb.position, positionEscape, OnPathComplete);
+
+            pointToPosition = positionEscape;//energysphere.transform.position;
+            Vector3 vectorToTarget = pointToPosition - transform.position;
+            float angle = (Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg)-90;
+            Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * speedRotation);
         }
        
     }

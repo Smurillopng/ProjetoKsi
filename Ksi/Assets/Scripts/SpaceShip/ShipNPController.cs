@@ -13,7 +13,7 @@ public class ShipNPController : MonoBehaviour
     [Header("Ship Settings")]
     public float speed = 30.0f; //velocidade da nave
 
-    public float speedRotation = 10.0f; //velocidade da nave
+    //public float speedRotation = 10.0f; //velocidade rotação da nave
     public float boostSpeed; // velocidade da nave com turbo
     public float turnFactor = 3.5f; // velocidade da rotação da nave
     public GameObject energyFollow;
@@ -22,9 +22,11 @@ public class ShipNPController : MonoBehaviour
 
     // local variables
     float accelerationInput = 0;
+
+    //Vector3 steeringTarget;
     float steeringInput = 0;
     float rotationAngle = 0;
-    private Vector3 pointToPosition;
+    //private Vector3 pointToPosition;
     [SerializeField] private float fuel = 100f; //quantidade máxima de turbo
     [SerializeField] private float burnFuel = 20f; //velocidade que o turbo é gasto
 
@@ -53,7 +55,7 @@ public class ShipNPController : MonoBehaviour
         shipSprite = GetComponent<SpriteRenderer>();
         defineNormalSpeed = speed;
         currentFuel = fuel; //inicia o turbo com carga máxima
-        pointToPosition = energysphere.transform.position;
+        //pointToPosition = energysphere.transform.position;
     }
 
     // Start is called before the first frame update
@@ -71,11 +73,11 @@ public class ShipNPController : MonoBehaviour
             Mathf.Clamp(transform.position.x, -50f, 50f),
             Mathf.Clamp(transform.position.y, -25f, 35f));
 
-        pointToPosition = energysphere.transform.position;
+        /*pointToPosition = steeringTarget;//energysphere.transform.position;
         Vector3 vectorToTarget = pointToPosition - transform.position;
         float angle = (Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg)-90;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * speedRotation);
+        transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * speedRotation);*/
     }
 
 

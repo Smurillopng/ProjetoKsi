@@ -10,6 +10,7 @@ TagManager:
   - SpaceShipRed
   - SpaceShipYellow
   - SpaceShipBlue
+  - Obstaculos
   layers:
   - Default
   - TransparentFX
